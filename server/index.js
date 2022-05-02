@@ -6,8 +6,6 @@ require('dotenv/config');
 
 // const postRoutes = require('./routes/postRoutes');
 
-
-// create a new express server
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,5 +17,9 @@ app.use(cors());
 
 const CONNECTION_URL = process.env.CONNECTION_URL
 
-mongoose.connect(CONNECTION_URL).then(()=>{console.log(`Running on PORT ${PORT}`)});
+mongoose.connect(CONNECTION_URL).then(()=>{console.log(`Running on PORT ${PORT}`)})
+  .catch(err => console.log(err));
 
+app.use('/', (req, res) => {
+  res.send('Funfando');
+});
