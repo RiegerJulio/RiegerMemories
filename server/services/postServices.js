@@ -11,4 +11,4 @@ const createPost = async (post) => {
   return result;
 }
 
-export default { getAllPosts, createPost };
+module.exports = { getAllPosts, createPost };
