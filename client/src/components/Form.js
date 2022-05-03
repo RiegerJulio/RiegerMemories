@@ -19,7 +19,7 @@ export default function Form() {
             <label htmlFor="message">Message</label>
           </div>
           <div className="file-button">
-            <label className="btn">
+            <label className="btn waves-effect waves-light col s12">
               Choose File
               <FileBase
                 type="file"
@@ -28,6 +28,7 @@ export default function Form() {
               />              
             </label>
           </div>
+          <button className="btn waves-effect waves-light col s12" type="submit" name="action">Submit</button>
       </form>
     </div>
   )
