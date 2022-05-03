@@ -11,4 +11,14 @@ const createPost = async (post) => {
   return result;
 }
 
-module.exports = { getAllPosts, createPost };
+const updatePost = async (id, post) => {
+  const updatedPost = await PostInfo.findByIdAndUpdate(id, post, { new: true });
+  return updatedPost;
+}
+
+const deletePost = async (id) => {
+  const deletedPost = await PostInfo.findByIdAndRemove(id);
+  return deletedPost;
+}
+
+module.exports = { getAllPosts, createPost, updatePost };

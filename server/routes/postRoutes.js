@@ -1,9 +1,9 @@
-// const postRoutes = require('express').Router();
-// const postController = require('../controllers/postController');
+const postRoutes = require('express').Router();
+const postController = require('../controllers/postController');
 
-// postRoutes.get('/', postController.getAllPosts);
-// postRoutes.get('/', (req, res) => {
-//   res.send('Funfando');
-// });
+postRoutes.get('/', postController.getAllPosts);
+postRoutes.post('/', postController.createPost);
+postRoutes.put('/:id', postController.updatePost);
+postRoutes.delete('/:id', postController.deletePost)
 
-// module.exports = postRoutes;
+module.exports = postRoutes;
