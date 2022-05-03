@@ -11,4 +11,9 @@ const createPost = async (post) => {
   return result;
 }
 
-module.exports = { getAllPosts, createPost };
+const updatePost = async (id, post) => {
+  const updatedPost = await PostInfo.findByIdAndUpdate(id, post, { new: true });
+  return updatedPost;
+}
+
+module.exports = { getAllPosts, createPost, updatePost };
