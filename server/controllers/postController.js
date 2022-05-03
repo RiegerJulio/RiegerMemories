@@ -30,12 +30,25 @@ const updatePost = async (req, res) => {
       res.status(404).json({ message: 'Post not found' });
     }
     const updatedPost = await postServices.updatePost(_id, post);
-    res.status(200).json(updatedPost);
+    res.status(200).json({ message: updatedPost });
   } catch (e) {
     res.status(500).json({ message: 'Something went wrong' });
   }
 }
 
+const deletePost = async (req, res) => {
+  const { id: _id } = req.params;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+      res.status(404).json({ message: 'Post not found' });
+    }
+    const deletedPost = await postServices.deletePost(id)
+    res.status(200).json({ message: deletedPost });
+  } catch (e) {
+    res.status(500).json({ message: 'Something went wrong'});
+  }
+}
 
     
 

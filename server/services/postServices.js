@@ -16,4 +16,9 @@ const updatePost = async (id, post) => {
   return updatedPost;
 }
 
+const deletePost = async (id) => {
+  const deletedPost = await PostInfo.findByIdAndRemove(id);
+  return deletedPost;
+}
+
 module.exports = { getAllPosts, createPost, updatePost };
