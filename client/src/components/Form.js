@@ -5,6 +5,14 @@ import './teste.css'
 
 import { createPost } from '../redux/actions/postsActions'
 
+const INITIAL_STATE = {
+  name: '',
+  title: '',
+  location: '',
+  message: '',
+  file: '',
+}
+
 export default function Form() {
   const [post, setPost] = useState({
     name: '',
@@ -19,6 +27,7 @@ export default function Form() {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createPost(post))
+    setPost(INITIAL_STATE)
   }
 
 
