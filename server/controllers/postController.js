@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const postServices = require('../services/postServices');
+const postServices = require('../services/postServices')
+// const PostInfo = require('../models/PostInfo');
 
 const getAllPosts = async (req, res) => {
   try {

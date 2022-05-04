@@ -1,4 +1,4 @@
-const { PostInfo } = require('../models/PostInfo');
+const PostInfo = require('../models/PostInfo');
 
 const getAllPosts = async () => {
   const allPosts = await PostInfo.find();
