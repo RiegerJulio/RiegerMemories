@@ -7,16 +7,16 @@ export default function Form() {
     <div>
       <form autoComplete="off" className="form col s6">
           <div className="input-field">
-            <input id="name" type="text" className="validate" />
-            <label htmlFor="first_name">Name</label>
+            <input placeholder="Name" id="name" type="text" className="validate" />
+            <label htmlFor="first_name"></label>
           </div>
           <div className="input-field">
-            <input id="title" type="text" className="validate" />
-            <label htmlFor="title">Title</label>
+            <input placeholder="Title" id="title" type="text" className="validate" />
+            <label htmlFor="title"></label>
           </div>
           <div className="input-field">
-            <textarea id="textarea1" className="materialize-textarea" />
-            <label htmlFor="message">Message</label>
+            <textarea placeholder="Message" id="textarea1" className="materialize-textarea" />
+            <label htmlFor="message"></label>
           </div>
           <div className="file-button">
             <label className="btn waves-effect waves-light col s12">
