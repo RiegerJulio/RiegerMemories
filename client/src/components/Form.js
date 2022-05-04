@@ -11,7 +11,7 @@ export default function Form() {
     title: '',
     location: '',
     message: '',
-    image: '',
+    file: '',
   })
 
   const dispatch = useDispatch()
@@ -74,7 +74,7 @@ export default function Form() {
               <FileBase
                 type="file"
                 multiple={false}
-                onDone={({base64}) => setPost({ ...post, image: base64 })}
+                onDone={({base64}) => setPost({ ...post, file: base64 })}
               />              
             </label>
           </div>
