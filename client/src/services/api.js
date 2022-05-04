@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchUrl = 'http://lohalhost:3000/posts';
+const fetchUrl = 'http://localhost:5000/posts';
 
 export const fetchAllPosts = () => axios.get(fetchUrl);
 export const createAPI = (data) => axios.post(fetchUrl, data);
