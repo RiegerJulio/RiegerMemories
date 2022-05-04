@@ -21,4 +21,4 @@ const deletePost = async (id) => {
   return deletedPost;
 }
 
-module.exports = { getAllPosts, createPost, updatePost };
+module.exports = { getAllPosts, createPost, updatePost, deletePost };
