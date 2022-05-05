@@ -12,9 +12,9 @@ export default function Feed() {
 
   console.log(posts)
 
-  useEffect(() =>{
-    dispatch(getAllPosts)
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch]);
 
   return (
     <div className="row">
