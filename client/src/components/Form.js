@@ -34,7 +34,7 @@ export default function Form() {
 
   return (
     <div>
-      <form autoComplete="off" className="form col s6" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="form" onSubmit={handleSubmit}>
           <div className="input-field">
             <input
               placeholder="Name"

@@ -5,6 +5,7 @@ import { getAllPosts } from '../redux/actions/postsActions';
 
 import Post from './Post'
 import Form from './Form'
+import Loader from './Loader';
 
 export default function Feed() {
   const posts = useSelector((state) => state.postsReducer);
@@ -19,13 +20,13 @@ export default function Feed() {
   return (
     <div className="row">
       <main className="col s6">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {
+          !posts ? <Loader /> : posts.map((post) => (
+            <Post key={post.id} post={post} />
+          ))
+        }
       </main>
-      <aside>
+      <aside className="col s6">
         <Form />
       </aside>
     </div>
