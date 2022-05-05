@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
-import { useDispatch } from 'react-redux'
-import './teste.css'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { createPost } from '../redux/actions/postsActions'
+import { createPost, updatePost } from '../redux/actions/postsActions'
 
 const INITIAL_STATE = {
   name: '',
@@ -13,7 +12,7 @@ const INITIAL_STATE = {
   file: '',
 }
 
-export default function Form() {
+export default function Form({ toEditPostId, setToEditPostId }) {
   const [post, setPost] = useState({
     name: '',
     title: '',
@@ -24,17 +23,33 @@ export default function Form() {
 
   const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(createPost(post))
+  const singlePost = useSelector((state) => (toEditPostId ? state.postsReducer.find((p) => p._id === toEditPostId) : null));
+
+  useEffect(() => {
+    if (singlePost) setPost(singlePost);
+  }, [singlePost]);
+
+  const clearForm = () => {
+    setToEditPostId(0)
     setPost(INITIAL_STATE)
+    console.log('Clear Funcionou')
   }
 
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (toEditPostId === 0) {
+      dispatch(createPost(post))
+    } else {
+      dispatch(updatePost(toEditPostId, post));
+    }
+    console.log('entrou aqui');
+    clearForm()
+  }
 
   return (
     <div>
-      <form autoComplete="off" className="form col s6" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="form" onSubmit={handleSubmit}>
+        <h3 className="center">{toEditPostId === 0 ? `Create` : `Update`} a post</h3>
           <div className="input-field">
             <input
               placeholder="Name"
@@ -69,6 +84,7 @@ export default function Form() {
           </div>
           <div className="input-field">
             <textarea
+              maxLength={90}
               placeholder="Message"
               id="textarea1"
               className="materialize-textarea"

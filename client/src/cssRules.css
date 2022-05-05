@@ -1,0 +1,13 @@
+input[type="file"] {
+  display: none;
+}
+
+.btn-floating.halfway-fab {
+  position: fixed;
+  right: 75px;
+  top: 280px
+}
+
+.card .card-content p {
+  overflow-wrap: break-word;
+}
