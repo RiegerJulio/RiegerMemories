@@ -12,9 +12,9 @@ export default function Post({ post, setToEditPostId }) {
       <div className="card large">
         <div className="card-image">
           <img src={post.file} alt="img" />
+          <span className="card-title">{post.title}</span>
         </div>
         <div className="card-content">
-          <span className="card-title">{post.title}</span>
           <p>{post.message}</p>
           <p>Localization: {post.location}</p>
           <p>By: {post.name}</p>

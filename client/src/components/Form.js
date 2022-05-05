@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from 'react-redux'
-import './teste.css'
 
 import { createPost, updatePost } from '../redux/actions/postsActions'
 
@@ -50,7 +49,7 @@ export default function Form({ toEditPostId, setToEditPostId }) {
   return (
     <div>
       <form autoComplete="off" className="form" onSubmit={handleSubmit}>
-        <h1>{toEditPostId === 0 ? `Create` : `Update`} a post</h1>
+        <h3 className="center">{toEditPostId === 0 ? `Create` : `Update`} a post</h3>
           <div className="input-field">
             <input
               placeholder="Name"
@@ -85,6 +84,7 @@ export default function Form({ toEditPostId, setToEditPostId }) {
           </div>
           <div className="input-field">
             <textarea
+              maxLength={90}
               placeholder="Message"
               id="textarea1"
               className="materialize-textarea"

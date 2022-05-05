@@ -1,3 +1,4 @@
+import './cssRules.css'
 import Feed from "./components/Feed";
 import Header from './components/Header'
 
