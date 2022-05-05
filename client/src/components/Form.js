@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import FileBase from 'react-file-base64'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './teste.css'
 
-import { createPost } from '../redux/actions/postsActions'
+import { createPost, updatePost } from '../redux/actions/postsActions'
+import { useEffect } from 'react'
 
 const INITIAL_STATE = {
   name: '',
@@ -13,7 +14,7 @@ const INITIAL_STATE = {
   file: '',
 }
 
-export default function Form() {
+export default function Form({ toEditPost, setToEditPost }) {
   const [post, setPost] = useState({
     name: '',
     title: '',
@@ -24,13 +25,21 @@ export default function Form() {
 
   const dispatch = useDispatch()
 
+  const singlePost = useSelector((state) => (toEditPost ? state.postsReducer.find((p) => p._id === toEditPost) : null));
+
+  useEffect(() => {
+    if (singlePost) setPost(singlePost);
+  }, [singlePost]);
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(createPost(post))
+    if (toEditPost === 0) {
+      dispatch(createPost(post))
+    } else {
+      dispatch(updatePost(toEditPost, post));
+    }
     setPost(INITIAL_STATE)
   }
-
-
 
   return (
     <div>
