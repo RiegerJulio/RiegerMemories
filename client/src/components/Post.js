@@ -1,6 +1,11 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import { deletePost } from '../redux/actions/postsActions';
+
 export default function Post({ post, setToEditPostId }) {
+
+  const dispatch = useDispatch();
 
   return (
     <div className="col s12 m6">
@@ -16,7 +21,7 @@ export default function Post({ post, setToEditPostId }) {
         </div>
         <div className="card-action">
           <button className="btn waves-effect waves-light col s6" onClick={() => setToEditPostId(post._id) }>Update Info</button>
-          <button className="btn waves-effect waves-light col s6">Delete Post</button>
+          <button className="btn waves-effect waves-light col s6" onClick={() => dispatch(deletePost(post._id))}>Delete Post</button>
         </div>
       </div>
     </div>
