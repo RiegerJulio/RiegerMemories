@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default function Post({ post, setToEditPost }) {
+export default function Post({ post, setToEditPostId }) {
 
   return (
     <div className="col s12 m6">
@@ -15,7 +15,7 @@ export default function Post({ post, setToEditPost }) {
           <p>By: {post.name}</p>
         </div>
         <div className="card-action">
-          <button className="btn waves-effect waves-light col s6" onClick={ setToEditPost }>Update Info</button>
+          <button className="btn waves-effect waves-light col s6" onClick={() => setToEditPostId(post._id) }>Update Info</button>
           <button className="btn waves-effect waves-light col s6">Delete Post</button>
         </div>
       </div>

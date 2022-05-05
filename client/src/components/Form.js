@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from 'react-redux'
 import './teste.css'
 
 import { createPost, updatePost } from '../redux/actions/postsActions'
-import { useEffect } from 'react'
 
 const INITIAL_STATE = {
   name: '',
@@ -14,7 +13,7 @@ const INITIAL_STATE = {
   file: '',
 }
 
-export default function Form({ toEditPost, setToEditPost }) {
+export default function Form({ toEditPostId, setToEditPostId }) {
   const [post, setPost] = useState({
     name: '',
     title: '',
@@ -25,25 +24,33 @@ export default function Form({ toEditPost, setToEditPost }) {
 
   const dispatch = useDispatch()
 
-  const singlePost = useSelector((state) => (toEditPost ? state.postsReducer.find((p) => p._id === toEditPost) : null));
+  const singlePost = useSelector((state) => (toEditPostId ? state.postsReducer.find((p) => p._id === toEditPostId) : null));
 
   useEffect(() => {
     if (singlePost) setPost(singlePost);
   }, [singlePost]);
 
+  const clearForm = () => {
+    setToEditPostId(0)
+    setPost(INITIAL_STATE)
+    console.log('Clear Funcionou')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (toEditPost === 0) {
+    if (toEditPostId === 0) {
       dispatch(createPost(post))
     } else {
-      dispatch(updatePost(toEditPost, post));
+      dispatch(updatePost(toEditPostId, post));
     }
-    setPost(INITIAL_STATE)
+    console.log('entrou aqui');
+    clearForm()
   }
 
   return (
     <div>
       <form autoComplete="off" className="form" onSubmit={handleSubmit}>
+        <h1>{toEditPostId === 0 ? `Create` : `Update`} a post</h1>
           <div className="input-field">
             <input
               placeholder="Name"

@@ -10,23 +10,23 @@ import Loader from './Loader';
 export default function Feed() {
   const posts = useSelector((state) => state.postsReducer);
   const dispatch = useDispatch();
-  const [toEditPost, setToEditPost] = useState(0);
+  const [toEditPostId, setToEditPostId] = useState(0);
 
   useEffect(() => {
     dispatch(getAllPosts());
-  }, [toEditPost, dispatch]);
+  }, [toEditPostId, dispatch]);
 
   return (
     <div className="row">
       <main className="col s6">
         {
           !posts ? <Loader /> : posts.map((post) => (
-            <Post key={post._id} post={post} setToEditPost={setToEditPost}/>
+            <Post key={post._id} post={post} setToEditPostId={setToEditPostId}/>
           ))
         }
       </main>
       <aside className="col s6">
-        <Form toEditPost={toEditPost} setToEditPost={setToEditPost}/>
+        <Form toEditPostId={toEditPostId} setToEditPostId={setToEditPostId}/>
       </aside>
     </div>
   )
