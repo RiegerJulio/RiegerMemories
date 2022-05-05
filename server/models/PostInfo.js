@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
+  name: String,
   title: String,
-  message: String,
   location: String,
+  message: String,
   file: String,
   createdAt: {
     type: Date,

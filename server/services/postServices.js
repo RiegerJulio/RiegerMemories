@@ -1,4 +1,4 @@
-const { PostInfo } = require('../models/PostInfo');
+const PostInfo = require('../models/PostInfo');
 
 const getAllPosts = async () => {
   const allPosts = await PostInfo.find();
@@ -21,4 +21,4 @@ const deletePost = async (id) => {
   return deletedPost;
 }
 
-module.exports = { getAllPosts, createPost, updatePost };
+module.exports = { getAllPosts, createPost, updatePost, deletePost };
